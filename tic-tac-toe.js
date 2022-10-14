@@ -1,8 +1,15 @@
-let X=true;
+ var X=true;
 window.onload=function(){
-var square=document.getElementById("board").children;
+var resetbutton=document.getElementsByClassName("btn")[0];
+resetbutton.addEventListener('click', function() {
+var stat=document.getElementById("status");
+stat.innerHTML=("Move your mouse over a square and click to play an X or an O.");
+stat.classList.remove("you-won")
+var square=document.getElementById("board").children;   
+X=true;
 for (let p=0; p < square.length; p++){
     square[p].setAttribute("class","square");
+    square[p].innerHTML="";
     square[p].addEventListener("mouseover",function(){
         square[p].classList.add("hover");
     })
@@ -11,27 +18,40 @@ for (let p=0; p < square.length; p++){
     })
     square[p].addEventListener("click",function()
     {
-        if (X==true){
-            square[p].innerHTML="X";
-            square[p].classList.add("X");
-        X=false
-        }
-        else{
-            square[p].innerHTML="O";
-            square[p].classList.add("O");
-            X=true
-        }
-    for (let p=0; p<square.length;p+=3)
+        console.log(X);
+        console.log(square[p]);
+        
+            if (X==true&&square[p].innerHTML=="")
+            {
+                square[p].innerHTML="X";
+                square[p].classList.add("X");
+            X=false
+            }
+            else 
+                if (X==false&&square[p].innerHTML=="")
+            {
+                
+                square[p].innerHTML="O";
+                square[p].classList.add("O");
+                X=true
+            }
+        for (let y=0; y<square.length;y+=3)
     {
-        if(square[p].innerHTML==square[p+1].innerHTML&&square[p].innerHTML==square[p+2].innerHTML&&square[p+1].innerHTML!="")
+        if(square[y].innerHTML==square[y+1].innerHTML&&square[y].innerHTML==square[y+2].innerHTML&&square[y].innerHTML!="")
         {
             if (X ==false)
             {
-            console.log("Congratulations! X is the Winner!")
+                stat.innerHTML=("Congratulations! X is the Winner!");
+                stat.classList.add("you-won");
+                
+               
             }
             else
             {
-                console.log("Congratulations! O is the Winner!")
+                stat.innerHTML=("Congratulations! O is the Winner!");
+                stat.classList.add("you-won");
+               
+                
             }
         }
     }  
@@ -41,37 +61,46 @@ for (let p=0; p < square.length; p++){
        {
         if (X ==false)
         {
-        console.log("Congratulations! X is the Winner!")
+            stat.innerHTML=("Congratulations! X is the Winner!");
+            stat.classList.add("you-won");
         }
         else
         {
-            console.log("Congratulations! O is the Winner!")
+            stat.innerHTML=("Congratulations! O is the Winner!");
+            stat.classList.add("you-won");
         }
-    }
-} 
+       }
+    } 
     if(square[2].innerHTML == square[4].innerHTML && square[2].innerHTML == square[6].innerHTML && square[2].innerHTML != "")
-    {
-        if (X ==false)
         {
-        console.log("Congratulations! X is the Winner!")
+            if (X ==false)
+            {
+                stat.innerHTML=("Congratulations! X is the Winner!");
+                stat.classList.add("you-won");
+            }
+            else
+            {
+                stat.innerHTML=("Congratulations! O is the Winner!")
+                stat.classList.add("you-won");
+            }
         }
-        else
-        {
-            console.log("Congratulations! O is the Winner!")
-        }
-    }
+    
     if(square[0].innerHTML == square[4].innerHTML && square[0].innerHTML == square[8].innerHTML && square[0].innerHTML != "")
-    {   
-        if (X ==false)
-        {
-        console.log("Congratulations! X is the Winner!")
+        {   
+            if (X ==false)
+            {
+                stat.innerHTML=("Congratulations! X is the Winner!");
+                stat.classList.add("you-won");
+            }
+            else
+            {
+                stat.innerHTML=("Congratulations! O is the Winner!");
+                stat.classList.add("you-won");
+            }
         }
-        else
-        {
-            console.log("Congratulations! O is the Winner!")
-        }
-    }
     });
    
 }
+});
+
 }
