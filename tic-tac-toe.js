@@ -20,7 +20,58 @@ for (let p=0; p < square.length; p++){
             square[p].innerHTML="O";
             square[p].classList.add("O");
             X=true
-        }            
-});
+        }
+    for (let p=0; p<square.length;p+=3)
+    {
+        if(square[p].innerHTML==square[p+1].innerHTML&&square[p].innerHTML==square[p+2].innerHTML&&square[p+1].innerHTML!="")
+        {
+            if (X ==false)
+            {
+            console.log("Congratulations! X is the Winner!")
+            }
+            else
+            {
+                console.log("Congratulations! O is the Winner!")
+            }
+        }
+    }  
+    for (let p=0; p<3;p+=3)
+    {
+       if(square[p].innerHTML==square[p+3].innerHTML&&square[p].innerHTML==square[p+6].innerHTML&&square[p].innerHTML!="") 
+       {
+        if (X ==false)
+        {
+        console.log("Congratulations! X is the Winner!")
+        }
+        else
+        {
+            console.log("Congratulations! O is the Winner!")
+        }
+    }
+} 
+    if(square[2].innerHTML == square[4].innerHTML && square[2].innerHTML == square[6].innerHTML && square[2].innerHTML != "")
+    {
+        if (X ==false)
+        {
+        console.log("Congratulations! X is the Winner!")
+        }
+        else
+        {
+            console.log("Congratulations! O is the Winner!")
+        }
+    }
+    if(square[0].innerHTML == square[4].innerHTML && square[0].innerHTML == square[8].innerHTML && square[0].innerHTML != "")
+    {   
+        if (X ==false)
+        {
+        console.log("Congratulations! X is the Winner!")
+        }
+        else
+        {
+            console.log("Congratulations! O is the Winner!")
+        }
+    }
+    });
+   
 }
 }
